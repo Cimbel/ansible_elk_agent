@@ -1,0 +1,10 @@
+elk_cluster_master ansible_host=***.***.***.***
+
+[gitlab_db]
+gitlab_db1 ansible_host=***.***.***.***
+
+[gitlab_server]
+gitlab_server1 ansible_host=***.***.***.***
+
+[elk_agents]
+agent02 ansible_host=***.***.***.***

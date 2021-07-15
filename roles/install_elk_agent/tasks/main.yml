@@ -1,0 +1,35 @@
+---
+# tasks file for install_elk_agent
+
+
+#- name: install additional package
+#  yum:
+#    name: curl
+#    state: latest
+
+- name: download package
+  shell: curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.13.2-x86_64.rpm
+
+- name: installing
+  shell: rpm -vi filebeat-7.13.2-x86_64.rpm
+  ignore_errors: true
+
+- name: copy config file
+  template:
+    src: "{{ local_path }}"
+    dest: "{{ remote_path }}"
+    mode: 0600
+
+- name: testing connectivity
+  shell: filebeat test output
+  register: result
+  notify:
+    - start and enable agent
+    - restart agent
+
+- name: result of testing
+  debug:
+    var: result.stdout_lines
+
+- name: remove unneeded package
+  shell: rm -rf filebeat-7.13.2-x86_64.rpm

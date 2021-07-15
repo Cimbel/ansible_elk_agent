@@ -1,0 +1,7 @@
+---
+# vars file for install_elk_agent
+
+log_path1   : "/var/log/messages"
+log_path2   : "/var/log/secure"
+local_path  : "filebeat.j2"
+remote_path : "/etc/filebeat/filebeat.yml"

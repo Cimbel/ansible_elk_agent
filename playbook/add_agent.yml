@@ -1,0 +1,6 @@
+---
+- name: install agent
+  hosts: elk_agents
+
+  roles:
+    - install_elk_agent

@@ -1,0 +1,19 @@
+---
+# handlers file for install_elk_agent
+
+
+- name: start and enable agent
+  service:
+    name: filebeat
+    state: restarted
+
+- name: restart agent
+  service:
+    name: filebeat
+    state: restarted
+    enabled: yes
+
+- name: stop agent
+  service:
+    name: filebeat
+    state: stopped
